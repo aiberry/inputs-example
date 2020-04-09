@@ -1,0 +1,65 @@
+{
+    "root": true,
+    "extends": [
+      "prettier",
+      "eslint:recommended",
+      "plugin:react/recommended"
+    ],
+    
+    "plugins": ["import", "react"],
+    "env": {
+       "es6": true,
+       "node": true,
+       "browser": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "ecmaFeatures": {
+        "jsx": true
+      },
+      "sourceType": "module"
+    },
+    "rules": {
+        "no-console": "warn",
+        "no-eval": "error",
+        "comma-dangle": [2, "never"],
+        "object-curly-spacing": [1, "always"],
+        "array-bracket-spacing": [2, "never"],
+        "max-len": [2, 120, {
+          "ignoreStrings": true,
+          "ignoreTemplateLiterals": true,
+          "ignoreComments": true
+        }],
+        "operator-linebreak": [2, "after"],
+        "consistent-return": 0,
+
+        "prefer-destructuring": [2, { "array": false, "object": false }, { "enforceForRenamedProperties": false }],
+
+        "function-paren-newline": 0,
+        "no-plusplus": 1,
+        "no-param-reassign": 1,
+        "no-mixed-operators": 1,
+        "no-restricted-syntax": 1,
+        "valid-jsdoc": [2, {
+          "requireReturn": false,
+          "requireParamDescription": false,
+          "requireReturnDescription": false
+        }]
+    },
+    "overrides": [
+      {
+        "files": "tests/**",
+        "rules": {
+          "no-template-curly-in-string": 1,
+          "react/jsx-uses-react": "warn",
+          "react/jsx-uses-vars": "warn"
+        }
+      }
+    ],
+    "settings": {
+      "react": {
+        "createClass": "createReactClass", 
+        "version": "detect" 
+      }
+    }
+}
