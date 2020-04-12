@@ -1,94 +1,56 @@
-import React from 'react'
-import styles from './BuyerSelect.module.css'
-import buyersStab from './buyersStab'
+/* eslint react/prop-types: 0 */
+import React from 'react';
+import styles from './BuyerSelect.module.css';
+import { buyersStab } from './../../constatnts';
+import { FaCaretUp, FaCaretDown } from 'react-icons/fa';
 
-class BuyerSelect extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      value: '',
-      displayCarOptions: false,
-      searchFilter: '',
-      hoveredValue: '',
-    }
-    this.handleFocus = this.handleFocus.bind(this)
-    this.handleBlur = this.handleBlur.bind(this)
-    this.handleSearchChange = this.handleSearchChange.bind(this)
-    this.searchInput = React.createRef()
-  }
-
-  handleFocus(event) {
-    this.setState({ ...this.state, displayCarOptions: true }, () =>
-      this.searchInput.current.focus()
-    )
-  }
-
-  handleBlur(event) {
-    if (this.state.hoveredValue) {
-      this.setState({
-        ...this.state,
-        value: this.state.hoveredValue,
-        displayCarOptions: false,
-        searchFilter: '',
-      })
-    } else {
-      this.setState({ ...this.state, displayCarOptions: true })
-    }
-  }
-
-  handleSearchChange(event) {
-    this.setState({ ...this.state, searchFilter: event.target.value })
-  }
-
-  render() {
-    return (
-      <span className={styles.carWrap}>
+const BuyerSelect = ({
+  setBuyer,
+  selectedBuyer,
+  setIsShowOptions,
+  isShowOptions,
+  searchFilter,
+  setSearchFilter
+}) => {
+  const searchInput = React.useRef();
+  const handleFocus = () => {
+    setIsShowOptions(true, () => searchInput.current.focus());
+  };
+  return (
+    <div
+      tabIndex="1"
+      className={`${styles.buyerWrap} ${
+        selectedBuyer ? '' : styles.placeholderValue
+      } `}
+      onFocus={handleFocus}
+      onBlur={() => {
+        setIsShowOptions(false);
+      }}>
+      {selectedBuyer || 'Select buyer'}
+      {isShowOptions ? (
+        <FaCaretUp className={styles.arrow} />
+      ) : (
+        <FaCaretDown className={styles.arrow} />
+      )}
+      <span className={isShowOptions ? styles.optionsBox : styles.hideOptionsBox}>
         <input
           type="text"
-          name="car"
-          placeholder="Car Title"
-          className={styles.carValue}
-          value={this.state.value}
-          onFocus={this.handleFocus}
-          onChange={(e) => e.preventDefault()}
+          ref={searchInput}
+          value={searchFilter}
+          onChange={(e) => {
+            setSearchFilter(e.target.value);
+          }}
         />
-        <span
-          className={
-            this.state.displayCarOptions ? styles.optionsBox : styles.hideOptionsBox
-          }
-        >
-          <input
-            type="text"
-            ref={this.searchInput}
-            value={this.state.searchFilter}
-            onChange={this.handleSearchChange}
-            onBlur={this.handleBlur}
-          />
-          {buyersStab
-            .filter((bueyr) => bueyr.name.indexOf(this.state.searchFilter) > -1)
-            .map((bueyr) => (
-              <div
-                key={bueyr.id}
-                onMouseOver={(e) =>
-                  this.setState({
-                    ...this.state,
-                    hoveredValue: bueyr.name,
-                  })
-                }
-                onMouseLeave={(e) =>
-                  this.setState({
-                    ...this.state,
-                    hoveredValue: '',
-                  })
-                }
-              >
-                {bueyr.name}
-              </div>
-            ))}
-        </span>
+        {buyersStab
+          .filter((bueyr) => bueyr.name.indexOf(searchFilter) > -1)
+          .map((bueyr) => (
+            <div key={bueyr.id} onClick={() => setBuyer(bueyr.name)}>
+              {bueyr.name}
+            </div>
+          ))}
       </span>
-    )
-  }
-}
+    </div>
+  );
+};
 
-export default BuyerSelect
+export default BuyerSelect;

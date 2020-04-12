@@ -1,16 +1,25 @@
-.buyerWrap {
+.carWrap {
   font-family: Arial, Helvetica, sans-serif;
-  line-height: 28px;
+  line-height: 30px;
   position: relative;
   height: 35px;
   margin: 15px;
   padding-left: 5px;
   border: 2px solid #e2e2e2;
   border-radius: 5px;
+  color: black;
 }
 
 .placeholderValue {
   color: dimgrey;
+}
+
+.avatar {
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  margin-right: 5px;
+  margin-bottom: -6px;
 }
 
 .arrow {
@@ -23,7 +32,6 @@
   position: absolute;
   top: 34px;
   left: 0px;
-  color: black;
   max-height: 250px;
   overflow-x: hidden;
   width: -webkit-fill-available;
@@ -43,10 +51,11 @@
 }
 
 .optionsBox > div {
+  cursor: default;
   padding-left: 5px;
 }
 
-.optionsBox div:hover {
+.optionsBox > div ~ div:hover {
   cursor: pointer;
   background-color: whitesmoke;
   font-weight: bold;
@@ -56,42 +65,26 @@
   display: none;
 }
 
-.optionsBox input {
-  position: sticky;
-  top: 0;
-  width: inherit;
-  background: url(https://img.icons8.com/search) no-repeat 3px;
-  background-size: 20px 20px;
-  background-color: white;
-  padding-left: 25px;
-  border-top: none;
-  border-right: none;
-  border-left: none;
-  border-bottom: 2px solid #e2e2e2;
-  height: 27px;
-  outline: none;
-}
-
 @media screen and (min-width: 1200px) {
-  .buyerWrap {
+  .carWrap {
     width: 130px;
   }
 }
 
 @media screen and (min-width: 900px) and (max-width: 1200px) {
-  .buyerWrap {
+  .carWrap {
     width: 120px;
   }
 }
 
 @media screen and (min-width: 550px) and (max-width: 900px) {
-  .buyerWrap {
+  .carWrap {
     width: 42%;
   }
 }
 
 @media screen and (max-width: 550px) {
-  .buyerWrap {
+  .carWrap {
     width: 90%;
   }
 }

@@ -1,7 +1,6 @@
 {
     "root": true,
     "extends": [
-      "prettier",
       "eslint:recommended",
       "plugin:react/recommended"
     ],
@@ -13,6 +12,7 @@
        "browser": true
     },
     "parserOptions": {
+      "parser": "babel-eslint",
       "ecmaVersion": 6,
       "ecmaFeatures": {
         "jsx": true
@@ -20,6 +20,8 @@
       "sourceType": "module"
     },
     "rules": {
+      "no-var": 1,
+      "prefer-const": 1,
         "no-console": "warn",
         "no-eval": "error",
         "comma-dangle": [2, "never"],
@@ -32,9 +34,7 @@
         }],
         "operator-linebreak": [2, "after"],
         "consistent-return": 0,
-
         "prefer-destructuring": [2, { "array": false, "object": false }, { "enforceForRenamedProperties": false }],
-
         "function-paren-newline": 0,
         "no-plusplus": 1,
         "no-param-reassign": 1,
@@ -46,16 +46,6 @@
           "requireReturnDescription": false
         }]
     },
-    "overrides": [
-      {
-        "files": "tests/**",
-        "rules": {
-          "no-template-curly-in-string": 1,
-          "react/jsx-uses-react": "warn",
-          "react/jsx-uses-vars": "warn"
-        }
-      }
-    ],
     "settings": {
       "react": {
         "createClass": "createReactClass", 

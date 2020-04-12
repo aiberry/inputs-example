@@ -1,4 +1,4 @@
-const buyers = [
+export const buyersStab = [
   {
     name: 'TestBuyer1',
     id: 1
@@ -59,6 +59,17 @@ const buyers = [
     name: 'TestBuyer16',
     id: 16
   }
-]
+];
 
-export default buyers
+export const carsStab = [
+  {
+    name: 'Vanessa',
+    id: 1,
+    avatarUrl: 'https://i.picsum.photos/id/1027/2848/4272.jpg'
+  },
+  {
+    name: 'Eleonora',
+    id: 2,
+    avatarUrl: 'https://i.picsum.photos/id/159/5184/2551.jpg'
+  }
+];
