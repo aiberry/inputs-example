@@ -41,7 +41,7 @@ const CarSelect = ({
           <FaCaretDown className={styles.arrow} />
         )}
       </div>
-      <span className={isShowOptions ? styles.optionsBox : styles.hideOptionsBox}>
+      <div className={isShowOptions ? styles.optionsBox : styles.hideOptionsBox}>
         <div>All Users</div>
         {carsStab.map((car) => (
           <div key={car.id} onClick={(e) => handleClick(e, car.id)}>
@@ -49,7 +49,7 @@ const CarSelect = ({
             {car.name}
           </div>
         ))}
-      </span>
+      </div>
     </div>
   );
 };

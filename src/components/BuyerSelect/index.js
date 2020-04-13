@@ -33,7 +33,7 @@ const BuyerSelect = ({
       ) : (
         <FaCaretDown className={styles.arrow} />
       )}
-      <span className={isShowOptions ? styles.optionsBox : styles.hideOptionsBox}>
+      <div className={isShowOptions ? styles.optionsBox : styles.hideOptionsBox}>
         <input
           type="text"
           ref={searchInput}
@@ -49,7 +49,7 @@ const BuyerSelect = ({
               {bueyr.name}
             </div>
           ))}
-      </span>
+      </div>
     </div>
   );
 };

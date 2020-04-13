@@ -21,6 +21,7 @@
 
 .selectorOptionsBox {
   position: absolute;
+  z-index: 2;
   top: 34px;
   left: 0px;
   max-height: 250px;
