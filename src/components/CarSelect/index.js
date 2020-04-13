@@ -1,5 +1,6 @@
-/* eslint react/prop-types: 0 */
 import React from 'react';
+
+import PropTypes from 'prop-types';
 import styles from './CarSelect.module.css';
 import { carsStab } from './../../constatnts';
 import { FaCaretUp, FaCaretDown } from 'react-icons/fa';
@@ -45,9 +46,7 @@ const CarSelect = ({
         {carsStab.map((car) => (
           <div key={car.id} onClick={(e) => handleClick(e, car.id)}>
             <img alt="img" className={styles.avatar} src={car.avatarUrl} />
-            {/* <span className={styles.valueText}> */}
             {car.name}
-            {/* </span> */}
           </div>
         ))}
       </span>
@@ -56,3 +55,11 @@ const CarSelect = ({
 };
 
 export default CarSelect;
+
+CarSelect.propTypes = {
+  setCar: PropTypes.func,
+  selectedCarName: PropTypes.func,
+  selectedCarUrl: PropTypes.string,
+  setIsShowOptions: PropTypes.func,
+  isShowOptions: PropTypes.bool
+};

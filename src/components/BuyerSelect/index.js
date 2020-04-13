@@ -1,5 +1,6 @@
-/* eslint react/prop-types: 0 */
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import styles from './BuyerSelect.module.css';
 import { buyersStab } from './../../constatnts';
 import { FaCaretUp, FaCaretDown } from 'react-icons/fa';
@@ -54,3 +55,12 @@ const BuyerSelect = ({
 };
 
 export default BuyerSelect;
+
+BuyerSelect.propTypes = {
+  setBuyer: PropTypes.func,
+  selectedBuyer: PropTypes.func,
+  setIsShowOptions: PropTypes.func,
+  isShowOptions: PropTypes.bool,
+  searchFilter: PropTypes.string,
+  setSearchFilter: PropTypes.func
+};
