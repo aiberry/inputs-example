@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FaCaretUp, FaCaretDown } from 'react-icons/fa';
 
 import styles from './BuyerSelect.module.css';
 import { buyersStab } from './../../constatnts';
-import { FaCaretUp, FaCaretDown } from 'react-icons/fa';
 
 const BuyerSelect = ({
   setBuyer,
@@ -58,7 +58,7 @@ export default BuyerSelect;
 
 BuyerSelect.propTypes = {
   setBuyer: PropTypes.func,
-  selectedBuyer: PropTypes.func,
+  selectedBuyer: PropTypes.string,
   setIsShowOptions: PropTypes.func,
   isShowOptions: PropTypes.bool,
   searchFilter: PropTypes.string,

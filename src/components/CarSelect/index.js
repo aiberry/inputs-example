@@ -1,9 +1,9 @@
 import React from 'react';
-
+import { FaCaretUp, FaCaretDown } from 'react-icons/fa';
 import PropTypes from 'prop-types';
+
 import styles from './CarSelect.module.css';
 import { carsStab } from './../../constatnts';
-import { FaCaretUp, FaCaretDown } from 'react-icons/fa';
 
 const CarSelect = ({
   setCar,
@@ -58,7 +58,7 @@ export default CarSelect;
 
 CarSelect.propTypes = {
   setCar: PropTypes.func,
-  selectedCarName: PropTypes.func,
+  selectedCarName: PropTypes.string,
   selectedCarUrl: PropTypes.string,
   setIsShowOptions: PropTypes.func,
   isShowOptions: PropTypes.bool
