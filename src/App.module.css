@@ -8,7 +8,6 @@
 .mainForm > input {
   font-size: 14px;
   height: 35px;
-  margin: 15px;
   padding-left: 5px;
   border: 2px solid #e2e2e2;
   border-radius: 5px;
@@ -17,7 +16,6 @@
 
 .filterBtn,
 .resetBtn {
-  margin: 15px;
   height: 35px;
   border: 2px solid #414e68;
   border-radius: 5px;
@@ -35,56 +33,69 @@
 @media screen and (min-width: 1200px) {
   .mainForm {
     width: 1200px;
-    justify-content: space-between;
+    justify-content: space-around;
   }
 
   .mainForm > input {
-    width: 130px;
+    width: 15%;
   }
 
   .filterBtn,
   .resetBtn {
-    width: 80px;
+    width: 7.5%;
   }
 }
 
 @media screen and (min-width: 900px) and (max-width: 1200px) {
   .mainForm {
-    width: 900px;
-    justify-content: space-between;
+    width: 95%;
+    justify-content: flex-start;
     flex-wrap: wrap;
+    padding: 5px;
+  }
+
+  .mainForm > input,
+  .filterBtn,
+  .resetBtn {
+    margin: 15px 1.6% 15px 1.6%;
   }
 
   .mainForm > input {
-    width: 120px;
+    width: 21.8%;
   }
 
   .filterBtn,
   .resetBtn {
-    width: 45%;
+    width: 9.3%;
   }
 }
 
 @media screen and (min-width: 550px) and (max-width: 900px) {
   .mainForm {
-    width: 550px;
-    justify-content: space-between;
+    width: 95%;
+    justify-content: space-around;
     flex-wrap: wrap;
   }
 
+  .mainForm > input,
+  .filterBtn,
+  .resetBtn {
+    margin: 15px 0 10px 0;
+  }
+
   .mainForm > input {
-    width: 25%;
+    width: 47%;
   }
 
   .filterBtn,
   .resetBtn {
-    width: 43%;
+    width: 22%;
   }
 }
 
 @media screen and (max-width: 550px) {
   .mainForm {
-    width: 300px;
+    width: 95%;
     flex-direction: column;
     align-items: center;
   }
@@ -92,6 +103,7 @@
   .mainForm > input,
   .filterBtn,
   .resetBtn {
-    width: 90%;
+    width: 95%;
+    margin: 15px 0 10px 0;
   }
 }

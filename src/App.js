@@ -1,9 +1,8 @@
 import React from 'react';
 
 import styles from './App.module.css';
-import BuyerSelect from './components/BuyerSelect';
-import CarSelect from './components/CarSelect';
-import { carsStab } from './constatnts';
+import Select from './components/Select';
+import { carsStab, buyersStab } from './constatnts';
 
 class App extends React.Component {
   constructor(props) {
@@ -11,7 +10,7 @@ class App extends React.Component {
     this.state = {
       buyer: {
         displayOptions: false,
-        current: '',
+        currentName: '',
         searchFilter: ''
       },
       car: {
@@ -38,10 +37,11 @@ class App extends React.Component {
       callback
     );
   };
-  setCurrentBuyer = (value) => {
+  setCurrentBuyer = (selectedId) => {
+    const selectedBuyer = buyersStab.find((buyer) => buyer.id === selectedId);
     this.setState({
       buyer: {
-        current: value,
+        currentName: selectedBuyer.name,
         displayOptions: false,
         searchFilter: ''
       }
@@ -55,32 +55,43 @@ class App extends React.Component {
   };
   setCurrentCar = (selectedId) => {
     const selectedCar = carsStab.find((car) => car.id === selectedId);
-    this.setState((state) => ({
+    this.setState({
       car: {
-        ...state.car,
         currentName: selectedCar.name,
-        currentAvatarUrl: selectedCar.avatarUrl
+        currentAvatarUrl: selectedCar.avatarUrl,
+        displayOptions: false
       }
-    }));
+    });
   };
 
   render() {
+    const {
+      setCurrentBuyer,
+      showBuyerOptions,
+      setBuyerSearchFilter,
+      setCurrentCar,
+      showCarOptions
+    } = this;
+    const { buyer, car } = this.state;
+
     return (
       <form autoComplete="off" className={styles.mainForm}>
-        <BuyerSelect
-          setBuyer={this.setCurrentBuyer}
-          selectedBuyer={this.state.buyer.current}
-          setIsShowOptions={this.showBuyerOptions}
-          isShowOptions={this.state.buyer.displayOptions}
-          setSearchFilter={this.setBuyerSearchFilter}
-          searchFilter={this.state.buyer.searchFilter}
+        <Select
+          {...buyer}
+          options={buyersStab}
+          setValue={setCurrentBuyer}
+          setIsShowOptions={showBuyerOptions}
+          setSearchFilter={setBuyerSearchFilter}
+          tabIndex="1"
+          placeholder="Select buyer"
         />
-        <CarSelect
-          setCar={this.setCurrentCar}
-          selectedCarUrl={this.state.car.currentAvatarUrl}
-          selectedCarName={this.state.car.currentName}
-          setIsShowOptions={this.showCarOptions}
-          isShowOptions={this.state.car.displayOptions}
+        <Select
+          {...car}
+          options={carsStab}
+          setValue={setCurrentCar}
+          setIsShowOptions={showCarOptions}
+          tabIndex="2"
+          placeholder="Car title"
         />
         <input type="text" name="text3" key="text3" placeholder="Text field" />
         <input type="text" name="text1" key="text1" placeholder="Text field" />

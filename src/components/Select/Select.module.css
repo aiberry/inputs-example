@@ -1,34 +1,44 @@
-.buyerWrap {
+.selectWrap {
   composes: selectorWrap from './../utils.css';
 }
 
-.placeholderValue {
+.avatar {
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  margin-right: 5px;
+  margin-bottom: -6px;
+}
+
+.bluringPlaceholder {
   composes: selectorPlaceholder from './../utils.css';
 }
 
-.arrow {
+.showArrow {
   composes: selectorArrow from './../utils.css';
 }
 
-.optionsBox {
+.hideElement {
+  display: none;
+}
+
+.showedOptions {
   composes: selectorOptionsBox from './../utils.css';
 }
 
-.optionsBox > div {
+.showedOptions > div {
+  cursor: default;
   padding-left: 5px;
 }
 
-.optionsBox div:hover {
+.showedOptions > div ~ div:hover,
+.showedOptions > input ~ div:hover {
   cursor: pointer;
   background-color: whitesmoke;
   font-weight: bold;
 }
 
-.hideOptionsBox {
-  display: none;
-}
-
-.optionsBox input {
+.showedOptions input {
   position: sticky;
   top: 0;
   width: inherit;
@@ -45,25 +55,28 @@
 }
 
 @media screen and (min-width: 1200px) {
-  .buyerWrap {
-    width: 130px;
+  .selectWrap {
+    width: 15%;
   }
 }
 
 @media screen and (min-width: 900px) and (max-width: 1200px) {
-  .buyerWrap {
-    width: 120px;
+  .selectWrap {
+    width: 21.8%;
+    margin: 15px 1.6% 15px 1.6%;
   }
 }
 
 @media screen and (min-width: 550px) and (max-width: 900px) {
-  .buyerWrap {
-    width: 42%;
+  .selectWrap {
+    width: 47%;
+    margin: 15px 0 10px 0;
   }
 }
 
 @media screen and (max-width: 550px) {
-  .buyerWrap {
-    width: 90%;
+  .selectWrap {
+    width: 95%;
+    margin: 15px 0 10px 0;
   }
 }
